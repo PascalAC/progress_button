@@ -1,6 +1,6 @@
 # Progress Button
 
-[![Pub](https://img.shields.io/pub/v/progress_indicator_button.svg)](https://pub.dartlang.org/packages/progress_indicator_button/) [![Build Status](https://api.cirrus-ci.com/github/PascalAC/progress_button.svg)](https://cirrus-ci.com/github/PascalAC/progress_button)
+[![Pub](https://img.shields.io/pub/v/progress_indicator_button.svg)](https://pub.dartlang.org/packages/progress_indicator_button/) [![Build Status](https://api.cirrus-ci.com/github/PascalAC/progress_button.svg)](https://cirrus-ci.com/github/PascalAC/progress_button) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQ8V6BELJP47G)
 
 A simple button that gives you the possibility to 
 transform into a circular one and shows a progress indicator.
