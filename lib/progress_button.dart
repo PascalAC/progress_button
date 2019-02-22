@@ -1,7 +1,7 @@
 library progress_button;
 
 import 'package:flutter/material.dart';
-import 'package:progress_button/button_stagger_animation.dart';
+import 'package:progress_indicator_button/button_stagger_animation.dart';
 
 class ProgressButton extends StatefulWidget {
   /// The width of the button while NOT animating.

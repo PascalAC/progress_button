@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progress_button/progress_button.dart';
+import 'package:progress_indicator_button/progress_button.dart';
 
 class App extends StatelessWidget {
   @override
@@ -23,7 +23,11 @@ class App extends StatelessWidget {
               ),
             ),
             onPressed: (AnimationController controller) {
-              controller.forward();
+              if (controller.isCompleted) {
+                controller.reverse();
+              } else {
+                controller.forward();
+              }
             },
           ),
         ),

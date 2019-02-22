@@ -1,8 +1,8 @@
-name: progress_button
-description: A new Flutter package project.
+name: progress_indicator_button
+description: A simple button which can transform and show a progress indicator.
 version: 0.0.1
-author:
-homepage:
+author: Pascal Brosinski<pascal@brosinski.eu>
+homepage: https://github.com/PascalAC/progress_button
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
