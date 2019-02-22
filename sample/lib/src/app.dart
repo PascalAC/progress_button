@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:progress_button/progress_button.dart';
 
@@ -24,10 +22,8 @@ class App extends StatelessWidget {
                 fontSize: 24,
               ),
             ),
-            onPressed: (AnimationController controller) async {
+            onPressed: (AnimationController controller) {
               controller.forward();
-              await Future.delayed(Duration(seconds: 5));
-              controller.reverse();
             },
           ),
         ),

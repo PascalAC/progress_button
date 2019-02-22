@@ -57,6 +57,12 @@ class _ProgressButtonState extends State<ProgressButton>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ButtonStaggerAnimation(
       controller: _controller.view,
