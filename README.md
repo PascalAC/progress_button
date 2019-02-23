@@ -10,25 +10,27 @@ transform into a circular one and shows a progress indicator.
 ## How to use
 
 ```dart
-ProgressButton(
-    width: 320,
+Container(
+    width: 200,
     height: 60,
-    borderRadius: BorderRadius.all(Radius.circular(8)),
-    child: Text(
-        "Sample",
-        style: TextStyle(
-        color: Colors.white,
-        fontSize: 24,
+    child: ProgressButton(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: Text(
+            "Sample",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+            ),
         ),
+        onPressed: (AnimationController controller) {
+            if (controller.isCompleted) {
+                controller.reverse();
+            } else {
+                controller.forward();
+            }
+        },
     ),
-    onPressed: (AnimationController controller) {
-        if (controller.isCompleted) {
-            controller.reverse();
-        } else {
-            controller.forward();
-        }
-    },
-)
+),
 ```
 
 Please check the sample folder for a simple implementation.
