@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:progress_indicator_button/button_stagger_animation.dart';
 
 class ProgressButton extends StatefulWidget {
-  /// The width of the button while NOT animating.
-  final double width;
-  /// The height of the button.
-  final double height;
   /// The background color of the button.
   final Color color;
   /// The progress indicator color.
@@ -27,8 +23,6 @@ class ProgressButton extends StatefulWidget {
   final Widget child;
 
   ProgressButton({
-    @required this.width,
-    @required this.height,
     @required this.child,
     @required this.onPressed,
     this.color = Colors.blue,
@@ -64,16 +58,16 @@ class _ProgressButtonState extends State<ProgressButton>
 
   @override
   Widget build(BuildContext context) {
-    return ButtonStaggerAnimation(
-      controller: _controller.view,
-      width: widget.width,
-      height: widget.height,
-      color: widget.color,
-      progressIndicatorColor: widget.progressIndicatorColor,
-      progressIndicatorSize: widget.progressIndicatorSize,
-      borderRadius: widget.borderRadius,
-      onPressed: widget.onPressed,
-      child: widget.child,
+    return Center(
+      child: ButtonStaggerAnimation(
+        controller: _controller.view,
+        color: widget.color,
+        progressIndicatorColor: widget.progressIndicatorColor,
+        progressIndicatorSize: widget.progressIndicatorSize,
+        borderRadius: widget.borderRadius,
+        onPressed: widget.onPressed,
+        child: widget.child,
+      ),
     );
   }
 }
