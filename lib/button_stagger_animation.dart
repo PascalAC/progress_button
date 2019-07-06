@@ -9,6 +9,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
   final Color progressIndicatorColor;
   final double progressIndicatorSize;
   final BorderRadius borderRadius;
+  final double strokeWidth;
   final Function(AnimationController) onPressed;
   final Widget child;
 
@@ -20,6 +21,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
     this.progressIndicatorSize,
     this.borderRadius,
     this.onPressed,
+    this.strokeWidth,
     this.child,
   }) : super(key: key);
 
@@ -36,6 +38,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
         width: progressIndicatorSize,
         height: progressIndicatorSize,
         child: CircularProgressIndicator(
+          strokeWidth: strokeWidth,
           valueColor: AlwaysStoppedAnimation<Color>(progressIndicatorColor),
         ),
       );
