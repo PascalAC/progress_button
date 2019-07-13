@@ -14,8 +14,11 @@ class ProgressButton extends StatefulWidget {
   final BorderRadius borderRadius;
   /// The duration of the animation.
   final Duration animationDuration;
+
+  /// The stroke width of progress indicator.
+  final double strokeWidth;
   /// Function that will be called at the on pressed event.
-  /// 
+  ///
   /// This will grant access to its [AnimationController] so
   /// that the animation can be controlled based on the need.
   final Function(AnimationController) onPressed;
@@ -26,6 +29,7 @@ class ProgressButton extends StatefulWidget {
     @required this.child,
     @required this.onPressed,
     this.color = Colors.blue,
+    this.strokeWidth = 2,
     this.progressIndicatorColor = Colors.white,
     this.progressIndicatorSize = 30,
     this.borderRadius = const BorderRadius.all(Radius.circular(0)),
@@ -62,6 +66,7 @@ class _ProgressButtonState extends State<ProgressButton>
       child: ButtonStaggerAnimation(
         controller: _controller.view,
         color: widget.color,
+        strokeWidth: widget.strokeWidth,
         progressIndicatorColor: widget.progressIndicatorColor,
         progressIndicatorSize: widget.progressIndicatorSize,
         borderRadius: widget.borderRadius,
