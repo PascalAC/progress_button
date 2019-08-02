@@ -15,6 +15,7 @@ Container(
     height: 60,
     child: ProgressButton(
         borderRadius: BorderRadius.all(Radius.circular(8)),
+        strokeWidth: 2,
         child: Text(
             "Sample",
             style: TextStyle(

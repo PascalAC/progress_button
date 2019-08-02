@@ -34,9 +34,9 @@ class ButtonStaggerAnimation extends StatelessWidget {
     if (controller.isAnimating) {
       return Container();
     } else if (controller.isCompleted) {
-      return SizedBox(
-        width: progressIndicatorSize,
-        height: progressIndicatorSize,
+      return OverflowBox(
+        maxWidth: progressIndicatorSize,
+        maxHeight: progressIndicatorSize,
         child: CircularProgressIndicator(
           strokeWidth: strokeWidth,
           valueColor: AlwaysStoppedAnimation<Color>(progressIndicatorColor),
