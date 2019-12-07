@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_indicator_button/raised_gradient_button.dart';
 
 class ButtonStaggerAnimation extends StatelessWidget {
   // Animation fields
@@ -6,6 +7,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
 
   // Display fields
   final Color color;
+  final Gradient gradient;
   final Color progressIndicatorColor;
   final double progressIndicatorSize;
   final BorderRadius borderRadius;
@@ -17,6 +19,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
     Key key,
     this.controller,
     this.color,
+    this.gradient,
     this.progressIndicatorColor,
     this.progressIndicatorSize,
     this.borderRadius,
@@ -76,7 +79,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
         return SizedBox(
           height: buttonHeight,
           width: widthAnimation.value,
-          child: RaisedButton(
+          child: gradient == null ? RaisedButton(
             shape: RoundedRectangleBorder(
               borderRadius: borderRadiusAnimation.value,
             ),
@@ -85,6 +88,18 @@ class ButtonStaggerAnimation extends StatelessWidget {
             onPressed: () {
               this.onPressed(controller);
             },
+          ) : new RaisedGradientButton(
+            child: _buttonChild(),
+            gradient: gradient,
+            borderRadius: new BorderRadius.only(
+              topLeft: borderRadiusAnimation.value.topLeft,
+              topRight: borderRadiusAnimation.value.topRight,
+              bottomRight: borderRadiusAnimation.value.bottomRight,
+              bottomLeft: borderRadiusAnimation.value.bottomLeft,
+            ),
+            height: buttonHeight,
+            width: widthAnimation.value,
+            onPressed: () => this.onPressed(controller),
           ),
         );
       },

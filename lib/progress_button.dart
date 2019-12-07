@@ -6,6 +6,8 @@ import 'package:progress_indicator_button/button_stagger_animation.dart';
 class ProgressButton extends StatefulWidget {
   /// The background color of the button.
   final Color color;
+  /// The background gradient of the button.
+  final Gradient gradient;
   /// The progress indicator color.
   final Color progressIndicatorColor;
   /// The size of the progress indicator.
@@ -28,6 +30,7 @@ class ProgressButton extends StatefulWidget {
   ProgressButton({
     @required this.child,
     @required this.onPressed,
+    this.gradient,
     this.color = Colors.blue,
     this.strokeWidth = 2,
     this.progressIndicatorColor = Colors.white,
@@ -66,6 +69,7 @@ class _ProgressButtonState extends State<ProgressButton>
       child: ButtonStaggerAnimation(
         controller: _controller.view,
         color: widget.color,
+        gradient: widget.gradient,
         strokeWidth: widget.strokeWidth,
         progressIndicatorColor: widget.progressIndicatorColor,
         progressIndicatorSize: widget.progressIndicatorSize,

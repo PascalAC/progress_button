@@ -16,6 +16,12 @@ class App extends StatelessWidget {
             height: 60,
             child: ProgressButton(
               borderRadius: BorderRadius.all(Radius.circular(8)),
+              gradient: new LinearGradient(
+                colors: <Color>[
+                  Colors.red,
+                  Colors.blue,
+                ]
+              ),
               strokeWidth: 2,
               child: Text(
                 "Sample",
