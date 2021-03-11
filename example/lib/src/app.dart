@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:progress_indicator_button/progress_button.dart';
 
@@ -16,6 +18,12 @@ class App extends StatelessWidget {
             height: 60,
             child: ProgressButton(
               borderRadius: BorderRadius.all(Radius.circular(8)),
+              gradient: new LinearGradient(
+                colors: <Color>[
+                  Colors.red,
+                  Colors.blue,
+                ]
+              ),
               strokeWidth: 2,
               child: Text(
                 "Sample",
@@ -24,12 +32,20 @@ class App extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
-              onPressed: (AnimationController controller) {
-                if (controller.isCompleted) {
-                  controller.reverse();
-                } else {
-                  controller.forward();
-                }
+              errorChild: const Icon(
+                Icons.close_sharp,
+                color: Colors.white,
+              ),
+              successChild: const Icon(
+                Icons.check_sharp,
+                color: Colors.white,
+              ),
+              onPressed: ( controller ) async {
+                await controller.loading();
+                await new Future.delayed( const Duration( seconds: 3 ) );
+                if ( Random.secure().nextBool() )
+                  await controller.success();
+                else await controller.error();
               },
             ),
           ),
