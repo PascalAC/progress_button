@@ -2,7 +2,7 @@ library progress_button;
 
 import 'package:flutter/material.dart';
 
-import './button_stagger_animation.dart';
+import 'package:progress_indicator_button/button_stagger_animation.dart';
 
 class ProgressButton extends StatefulWidget {
   /// The background color of the button.
