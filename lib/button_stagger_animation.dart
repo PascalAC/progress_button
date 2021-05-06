@@ -10,19 +10,23 @@ class ButtonStaggerAnimation extends StatelessWidget {
   final double progressIndicatorSize;
   final BorderRadius borderRadius;
   final double strokeWidth;
-  final Function(AnimationController) onPressed;
+  final Function(AnimationController)? onPressed;
   final Widget child;
+  final bool outlined;
+  final double height;
 
   ButtonStaggerAnimation({
-    Key key,
-    this.controller,
-    this.color,
-    this.progressIndicatorColor,
-    this.progressIndicatorSize,
-    this.borderRadius,
-    this.onPressed,
-    this.strokeWidth,
-    this.child,
+    Key? key,
+    required this.controller,
+    required this.color,
+    required this.progressIndicatorColor,
+    required this.progressIndicatorSize,
+    required this.borderRadius,
+    required this.onPressed,
+    required this.strokeWidth,
+    required this.child,
+    required this.outlined,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -50,7 +54,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
       BuildContext context, BoxConstraints constraints) {
     var buttonHeight = (constraints.maxHeight != double.infinity)
         ? constraints.maxHeight
-        : 60.0;
+        : height;
 
     var widthAnimation = Tween<double>(
       begin: constraints.maxWidth,
@@ -76,16 +80,35 @@ class ButtonStaggerAnimation extends StatelessWidget {
         return SizedBox(
           height: buttonHeight,
           width: widthAnimation.value,
-          child: RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: borderRadiusAnimation.value,
-            ),
-            color: color,
-            child: _buttonChild(),
-            onPressed: () {
-              this.onPressed(controller);
-            },
-          ),
+          child: outlined
+              ? OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    primary: color,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: borderRadiusAnimation.value,
+                    ),
+                  ),
+                  onPressed: onPressed != null
+                      ? () {
+                          onPressed!(controller);
+                        }
+                      : null,
+                  child: _buttonChild(),
+                )
+              : ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: color,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: borderRadiusAnimation.value,
+                    ),
+                  ),
+                  onPressed: onPressed != null
+                      ? () {
+                          onPressed!(controller);
+                        }
+                      : null,
+                  child: _buttonChild(),
+                ),
         );
       },
     );
