@@ -32,7 +32,8 @@ class ProgressButton extends StatefulWidget {
   ///
   /// This will grant access to its [AnimationController] so
   /// that the animation can be controlled based on the need.
-  final Function(AnimationController) onPressed;
+  /// If it is null, the button will be disabled.
+  final Function(AnimationController)? onPressed;
 
   /// The child to display on the button.
   final Widget child;

@@ -10,7 +10,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
   final double progressIndicatorSize;
   final BorderRadius borderRadius;
   final double strokeWidth;
-  final Function(AnimationController) onPressed;
+  final Function(AnimationController)? onPressed;
   final Widget child;
   final bool outlined;
   final double height;
@@ -88,9 +88,11 @@ class ButtonStaggerAnimation extends StatelessWidget {
                       borderRadius: borderRadiusAnimation.value,
                     ),
                   ),
-                  onPressed: () {
-                    onPressed(controller);
-                  },
+                  onPressed: onPressed != null
+                      ? () {
+                          onPressed!(controller);
+                        }
+                      : null,
                   child: _buttonChild(),
                 )
               : ElevatedButton(
@@ -100,9 +102,11 @@ class ButtonStaggerAnimation extends StatelessWidget {
                       borderRadius: borderRadiusAnimation.value,
                     ),
                   ),
-                  onPressed: () {
-                    onPressed(controller);
-                  },
+                  onPressed: onPressed != null
+                      ? () {
+                          onPressed!(controller);
+                        }
+                      : null,
                   child: _buttonChild(),
                 ),
         );
