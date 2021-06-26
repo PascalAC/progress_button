@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 
 class ButtonStaggerAnimation extends StatelessWidget {
   // Animation fields
-  final AnimationController controller;
+  final  controller;
 
   // Display fields
-  final Color color;
-  final Color progressIndicatorColor;
-  final double progressIndicatorSize;
-  final BorderRadius borderRadius;
+  final Color? color;
+  final Color? progressIndicatorColor;
+  final double? progressIndicatorSize;
+  final BorderRadius? borderRadius;
   final double strokeWidth;
-  final Function(AnimationController) onPressed;
-  final Widget child;
+  final Function(AnimationController)? onPressed;
+  final Widget? child;
 
   ButtonStaggerAnimation({
-    Key key,
+    Key? key,
     this.controller,
     this.color,
     this.progressIndicatorColor,
     this.progressIndicatorSize,
     this.borderRadius,
     this.onPressed,
-    this.strokeWidth,
+    this.strokeWidth = 0.0,
     this.child,
   }) : super(key: key);
 
@@ -30,16 +30,16 @@ class ButtonStaggerAnimation extends StatelessWidget {
     return LayoutBuilder(builder: _progressAnimatedBuilder);
   }
 
-  Widget _buttonChild() {
-    if (controller.isAnimating) {
+  Widget? _buttonChild() {
+    if (controller!.isAnimating) {
       return Container();
-    } else if (controller.isCompleted) {
+    } else if (controller!.isCompleted) {
       return OverflowBox(
         maxWidth: progressIndicatorSize,
         maxHeight: progressIndicatorSize,
         child: CircularProgressIndicator(
           strokeWidth: strokeWidth,
-          valueColor: AlwaysStoppedAnimation<Color>(progressIndicatorColor),
+          valueColor: AlwaysStoppedAnimation<Color>(progressIndicatorColor!),
         ),
       );
     }
@@ -83,7 +83,7 @@ class ButtonStaggerAnimation extends StatelessWidget {
             color: color,
             child: _buttonChild(),
             onPressed: () {
-              this.onPressed(controller);
+              this.onPressed!(controller);
             },
           ),
         );

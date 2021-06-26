@@ -1,7 +1,8 @@
 library progress_button;
 
 import 'package:flutter/material.dart';
-import 'package:progress_indicator_button/button_stagger_animation.dart';
+
+import 'button_stagger_animation.dart';
 
 class ProgressButton extends StatefulWidget {
   /// The background color of the button.
@@ -21,9 +22,9 @@ class ProgressButton extends StatefulWidget {
   ///
   /// This will grant access to its [AnimationController] so
   /// that the animation can be controlled based on the need.
-  final Function(AnimationController) onPressed;
+  final Function(AnimationController)? onPressed;
   /// The child to display on the button.
-  final Widget child;
+  final Widget? child;
 
   ProgressButton({
     @required this.child,
@@ -42,7 +43,7 @@ class ProgressButton extends StatefulWidget {
 
 class _ProgressButtonState extends State<ProgressButton>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  var _controller;
 
   @override
   void initState() {
