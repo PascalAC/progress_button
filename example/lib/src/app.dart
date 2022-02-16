@@ -24,8 +24,8 @@ class App extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
-              onPressed: (AnimationController controller) {
-                if (controller.isCompleted) {
+              onPressed: (AnimationController? controller) {
+                if (controller!.isCompleted) {
                   controller.reverse();
                 } else {
                   controller.forward();

@@ -13,6 +13,6 @@ void main() {
     await tester.tap(find.byType(RaisedButton));
 
     final widget = tester.widget<ButtonStaggerAnimation>(find.byType(ButtonStaggerAnimation));
-    expect(widget.controller.isAnimating, true);
+    expect(widget.controller!.isAnimating, true);
   });
 }

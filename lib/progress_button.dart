@@ -6,28 +6,34 @@ import 'package:progress_indicator_button/button_stagger_animation.dart';
 class ProgressButton extends StatefulWidget {
   /// The background color of the button.
   final Color color;
+
   /// The progress indicator color.
   final Color progressIndicatorColor;
+
   /// The size of the progress indicator.
   final double progressIndicatorSize;
+
   /// The border radius while NOT animating.
   final BorderRadius borderRadius;
+
   /// The duration of the animation.
   final Duration animationDuration;
 
   /// The stroke width of progress indicator.
   final double strokeWidth;
+
   /// Function that will be called at the on pressed event.
   ///
   /// This will grant access to its [AnimationController] so
   /// that the animation can be controlled based on the need.
-  final Function(AnimationController) onPressed;
+  final Function(AnimationController?) onPressed;
+
   /// The child to display on the button.
   final Widget child;
 
   ProgressButton({
-    @required this.child,
-    @required this.onPressed,
+    required this.child,
+    required this.onPressed,
     this.color = Colors.blue,
     this.strokeWidth = 2,
     this.progressIndicatorColor = Colors.white,
@@ -42,7 +48,7 @@ class ProgressButton extends StatefulWidget {
 
 class _ProgressButtonState extends State<ProgressButton>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -64,7 +70,7 @@ class _ProgressButtonState extends State<ProgressButton>
   Widget build(BuildContext context) {
     return Center(
       child: ButtonStaggerAnimation(
-        controller: _controller.view,
+        controller: _controller.view as AnimationController?,
         color: widget.color,
         strokeWidth: widget.strokeWidth,
         progressIndicatorColor: widget.progressIndicatorColor,
